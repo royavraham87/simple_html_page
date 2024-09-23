@@ -51,12 +51,29 @@
 
 <div class="login-container">
     <h2>Login</h2>
-    <form id="loginForm" action="/login" method="POST">
+    <form id="loginForm" onsubmit="handleLogin(event)">
         <input type="text" name="username" placeholder="Username" value="roy" required>
         <input type="password" name="password" placeholder="Password" value="1234" required>
         <button type="submit">Login</button>
     </form>
 </div>
+
+<script>
+    function handleLogin(event) {
+        event.preventDefault(); // Prevent form from submitting
+        const username = document.querySelector('input[name="username"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+
+        // Check if the credentials are correct
+        if (username === "roy" && password === "1234") {
+            // Navigate to successful login page
+            window.location.href = "success.html";
+        } else {
+            // Navigate to unsuccessful login page
+            window.location.href = "failed.html";
+        }
+    }
+</script>
 
 </body>
 </html>
